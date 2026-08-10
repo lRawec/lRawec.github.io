@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Carlos 2029 - Skill Mapping</title>
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <!-- Carga de tipografía base -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "var(--color-background)",
+                        "on-surface": "var(--color-on-surface)",
+                        "on-surface-variant": "var(--color-on-surface-variant)",
+                        "primary": "var(--color-primary)",
+                        "primary-container": "var(--color-primary-container)",
+                        "primary-fixed": "var(--color-primary-fixed)",
+                        "surface": "var(--color-surface)",
+                        "surface-container-lowest": "var(--color-surface-lowest)",
+                        "surface-container": "var(--color-surface-container)",
+                        "surface-container-high": "var(--color-surface-high)",
+                        "secondary-fixed": "var(--color-secondary-fixed)"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "margin-mobile": "20px",
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "unit": "4px",
+                        "section-gap": "120px",
+                        "container-max-width": "1200px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["var(--font-headline)"],
+                        "headline-lg-mobile": ["var(--font-headline)"],
+                        "headline-lg": ["var(--font-headline)"],
+                        "display": ["var(--font-headline)"],
+                        "body-lg": ["var(--font-body)"],
+                        "body-md": ["var(--font-body)"],
+                        "label-md": ["var(--font-label)"],
+                        "label-sm": ["var(--font-label)"],
+                        "label-bold": ["var(--font-label)"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="flex h-screen overflow-hidden font-body-md bg-background">
+
+    <!-- Carga del Sidebar -->
+    <div id="sidebar-placeholder"></div>
+
+    <!-- Mobile Top App Bar -->
+    <div
+        class="md:hidden flex justify-between items-center w-full px-gutter h-16 bg-surface border-b-2 border-black fixed top-0 left-0 z-20">
+        <h1 class="font-headline-md text-headline-md font-bold text-black uppercase">Career Oracle</h1>
+        <div class="flex gap-4">
+            <button class="text-black hover:text-primary-container transition-opacity">
+                <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+            </button>
+            <button class="text-black hover:text-primary-container transition-opacity">
+                <span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+            </button>
+            <div
+                class="w-8 h-8 rounded-none border-2 border-black bg-primary-container flex justify-center items-center">
+                <span class="material-symbols-outlined text-white text-sm">person</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Canvas -->
+    <main class="flex-1 md:ml-64 flex flex-col h-full bg-background relative pt-16 md:pt-0">
+
+        <!-- Chat Area -->
+        <div class="flex-1 overflow-y-auto px-margin-mobile md:px-margin-desktop py-8 scroll-smooth"
+            id="chat-container">
+            <div class="max-w-[800px] mx-auto space-y-12">
+
+                <!-- User Prompt Message -->
+                <div class="flex justify-end">
+                    <div class="bg-primary-fixed border-2 border-black neo-brutalism px-6 py-4 max-w-[80%]">
+                        <p class="font-body-md text-body-md text-black font-bold uppercase">¿Qué habilidades necesita
+                            desarrollar Carlos para lograr sus objetivos?</p>
+                    </div>
+                </div>
+
+                <!-- Agent Response Container -->
+                <div class="flex items-start gap-6">
+                    <div
+                        class="w-12 h-12 rounded-none bg-primary-container border-2 border-black neo-brutalism flex items-center justify-center shrink-0">
+                        <span class="material-symbols-outlined text-white" data-icon="psychology">psychology</span>
+                    </div>
+
+                    <div
+                        class="flex-1 bg-surface border-2 border-black neo-brutalism flex flex-col relative min-h-[300px]">
+
+                        <!-- Thinking Indicator -->
+                        <div id="thinking-indicator"
+                            class="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-surface z-10 transition-opacity duration-500">
+                            <span class="material-symbols-outlined animate-spin text-4xl text-primary">autorenew</span>
+                            <span class="font-label-md uppercase font-bold tracking-widest animate-pulse">Analizando
+                                requerimientos técnicos...</span>
+                        </div>
+
+                        <!-- Content (Hidden initially) -->
+                        <div id="response-content" class="hidden-element flex flex-col h-full">
+                            <div class="border-b-2 border-black p-6 bg-primary-fixed flex items-center gap-4">
+                                <h2
+                                    class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-black uppercase tracking-tight">
+                                    Mapeo de Habilidades</h2>
+                            </div>
+
+                            <div class="p-6 md:p-8 flex flex-col gap-8 bg-white flex-grow">
+                                <div class="border-l-4 border-primary pl-4">
+                                    <p class="font-body-lg text-body-lg text-on-surface leading-relaxed">
+                                        Basado en la información disponible, Carlos requiere escalar sus capacidades
+                                        actuales de orquestación de IA hacia niveles de infraestructura corporativa.
+                                    </p>
+                                </div>
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div class="border-2 border-black p-5 bg-surface relative group">
+                                        <div
+                                            class="absolute -top-3 -right-3 bg-secondary-fixed text-black border-2 border-black px-2 py-1 font-label-sm text-label-sm uppercase neo-shadow">
+                                            Agentic AI</div>
+                                        <h3 class="font-headline-md text-headline-md mb-3 uppercase">Arquitectura de IA
+                                            de nivel empresarial</h3>
+                                        <p id="typewriter-skill-1"
+                                            class="font-body-md text-body-md mb-4 text-on-surface-variant typewriter-text min-h-[4rem]">
+                                        </p>
+
+                                        <div class="mt-auto hidden-element delay-reveal-1">
+                                            <div
+                                                class="flex justify-between font-label-sm text-label-sm mb-1 uppercase">
+                                                <span>Capacidad de Producción</span>
+                                                <span>90%</span>
+                                            </div>
+                                            <div class="w-full h-4 border-2 border-black bg-white">
+                                                <div class="h-full bg-primary w-[90%] border-r-2 border-black"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="border-2 border-black p-5 bg-surface relative group hidden-element"
+                                        id="card-skill-2">
+                                        <div
+                                            class="absolute -top-3 -right-3 bg-primary-container text-white border-2 border-black px-2 py-1 font-label-sm text-label-sm uppercase neo-shadow">
+                                            Desarrollo</div>
+                                        <h3 class="font-headline-md text-headline-md mb-3 uppercase">Dominio del Backend
+                                        </h3>
+                                        <p id="typewriter-skill-2"
+                                            class="font-body-md text-body-md mb-4 text-on-surface-variant min-h-[4rem]">
+                                        </p>
+
+                                        <div class="mt-auto hidden-element delay-reveal-2">
+                                            <div
+                                                class="flex justify-between font-label-sm text-label-sm mb-1 uppercase">
+                                                <span>Implementación</span>
+                                                <span>85%</span>
+                                            </div>
+                                            <div class="w-full h-4 border-2 border-black bg-white">
+                                                <div class="h-full bg-secondary-fixed w-[85%] border-r-2 border-black">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="border-2 border-black p-5 bg-surface relative group md:col-span-2 hidden-element"
+                                        id="card-skill-3">
+                                        <div
+                                            class="absolute -top-3 -right-3 bg-black text-white border-2 border-black px-2 py-1 font-label-sm text-label-sm uppercase neo-shadow">
+                                            Infraestructura</div>
+                                        <h3 class="font-headline-md text-headline-md mb-3 uppercase">Herramientas
+                                            Corporativas y Adaptabilidad</h3>
+                                        <p id="typewriter-skill-3"
+                                            class="font-body-md text-body-md mb-4 text-on-surface-variant min-h-[3rem]">
+                                        </p>
+
+                                        <div class="mt-auto hidden-element delay-reveal-3">
+                                            <div
+                                                class="flex justify-between font-label-sm text-label-sm mb-1 uppercase">
+                                                <span>Adaptabilidad Corporativa</span>
+                                                <span>Iniciando Fase de Expansión</span>
+                                            </div>
+                                            <div class="w-full h-4 border-2 border-black bg-white">
+                                                <div
+                                                    class="h-full bg-primary w-[30%] border-r-2 border-black animate-pulse">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="h-8"></div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch("sidebar.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("sidebar-placeholder").innerHTML = data;
+                    activateSidebarLink();
+                })
+                .catch(error => console.error(error));
+            startAiSimulation();
+        });
+
+        const text1 = "Para escalar sistemas agénticos (orquestados con LangChain, n8n y Docker) hacia entornos corporativos complejos de alta disponibilidad, necesita desarrollar habilidades avanzadas en Enterprise-Grade AI Architecture.";
+        const text2 = "Para construir los motores lógicos de extremo a extremo que soportarán a los agentes autónomos, requiere perfeccionar el desarrollo de API RESTful utilizando Python y FastAPI.";
+        const text3 = "Para ganar adaptabilidad, necesita dominar los entornos y stacks tecnológicos propietarios de las grandes empresas, logrando la misma agilidad y eficiencia que tiene en sus prototipos locales.";
+
+        function startAiSimulation() {
+            const thinkingIndicator = document.getElementById('thinking-indicator');
+            const responseContent = document.getElementById('response-content');
+
+            const tw1 = document.getElementById('typewriter-skill-1');
+            const tw2 = document.getElementById('typewriter-skill-2');
+            const tw3 = document.getElementById('typewriter-skill-3');
+
+            const card2 = document.getElementById('card-skill-2');
+            const card3 = document.getElementById('card-skill-3');
+
+            const reveal1 = document.querySelector('.delay-reveal-1');
+            const reveal2 = document.querySelector('.delay-reveal-2');
+            const reveal3 = document.querySelector('.delay-reveal-3');
+
+            setTimeout(() => {
+                thinkingIndicator.classList.add('opacity-0');
+                setTimeout(() => {
+                    thinkingIndicator.classList.add('hidden');
+                    responseContent.classList.remove('hidden-element');
+                    responseContent.classList.add('revealed');
+
+                    // Cascada de escritura
+                    typeWriter(tw1, text1, 0, () => {
+                        tw1.classList.remove('typewriter-text');
+                        reveal1.classList.remove('hidden-element');
+                        reveal1.classList.add('revealed');
+
+                        card2.classList.remove('hidden-element');
+                        card2.classList.add('revealed');
+                        tw2.classList.add('typewriter-text');
+
+                        typeWriter(tw2, text2, 0, () => {
+                            tw2.classList.remove('typewriter-text');
+                            reveal2.classList.remove('hidden-element');
+                            reveal2.classList.add('revealed');
+
+                            card3.classList.remove('hidden-element');
+                            card3.classList.add('revealed');
+                            tw3.classList.add('typewriter-text');
+
+                            typeWriter(tw3, text3, 0, () => {
+                                tw3.classList.remove('typewriter-text');
+                                reveal3.classList.remove('hidden-element');
+                                reveal3.classList.add('revealed');
+                            });
+                        });
+                    });
+                }, 500);
+            }, 1800); // Simula el tiempo de procesamiento
+        }
+
+        function typeWriter(element, text, index, callback) {
+            if (index < text.length) {
+                element.innerHTML += text.charAt(index);
+
+                const randomSpeed = Math.floor(Math.random() * 15) + 5;
+                setTimeout(() => typeWriter(element, text, index + 1, callback), randomSpeed);
+            } else if (callback) {
+                callback();
+            }
+        }
+
+        function activateSidebarLink() {
+            const links = document.querySelectorAll(".sidebar-link");
+            if (!links.length) return;
+            const currentPage = window.location.pathname.split("/").pop() || "main_interface.html";
+            links.forEach(link => {
+                const href = link.getAttribute("href");
+                if (!href) return;
+                const linkPage = new URL(href, window.location.href).pathname.split("/").pop();
+                const isCurrent = linkPage === currentPage;
+                link.classList.toggle("active", isCurrent);
+            });
+        }
+
+        const THEME_STORAGE_KEY = "site-theme";
+
+        function applyTheme(themeName) {
+            const htmlElement = document.documentElement;
+            if (themeName === "estilo1" || themeName === "estilo2") {
+                htmlElement.setAttribute("data-theme", themeName);
+            } else {
+                htmlElement.removeAttribute("data-theme");
+            }
+        }
+
+        function getStoredTheme() {
+            return localStorage.getItem(THEME_STORAGE_KEY);
+        }
+
+        function applyStoredTheme() {
+            applyTheme(getStoredTheme());
+        }
+
+        function getNextTheme(currentTheme) {
+            if (!currentTheme) return "estilo1";
+            if (currentTheme === "estilo1") return "estilo2";
+            return null;
+        }
+
+        window.addEventListener("storage", (event) => {
+            if (event.key === THEME_STORAGE_KEY) {
+                applyTheme(event.newValue);
+            }
+        });
+
+        applyStoredTheme();
+
+        function toggleTheme(event) {
+            if (event) event.preventDefault();
+            const currentTheme = document.documentElement.getAttribute("data-theme");
+            const nextTheme = getNextTheme(currentTheme);
+
+            applyTheme(nextTheme);
+
+            if (nextTheme) {
+                localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+            } else {
+                localStorage.removeItem(THEME_STORAGE_KEY);
+            }
+        }
+    </script>
+</body>
+
+</html>

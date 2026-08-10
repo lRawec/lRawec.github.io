@@ -1,0 +1,174 @@
+/* =========================================
+   TEMA 0: ORIGINAL (AZUL) & TIPOGRAFÍAS GLOBALES
+   ========================================= */
+:root {
+	--color-background: #f9f9f9;
+	--color-on-surface: #1a1c1c;
+	--color-on-surface-variant: #434656;
+	--color-primary: #0040e0;
+	--color-primary-container: #2e5bff;
+	--color-primary-fixed: #dde1ff;
+	--color-surface: #f9f9f9;
+	--color-surface-lowest: #ffffff;
+	--color-surface-container: #eeeeee;
+	--color-surface-high: #e8e8e8;
+	--color-secondary-fixed: #e2e2e2;
+	--neo-border-color: #000000;
+
+	/* Fuentes globales para todos los temas */
+	--font-headline: 'Hanken Grotesk', sans-serif;
+	--font-body: 'Hanken Grotesk', sans-serif;
+	--font-label: 'JetBrains Mono', monospace;
+}
+
+/* =========================================
+   TEMA 1: CÁLIDO / NARANJA (Estilo 1)
+   ========================================= */
+[data-theme="estilo1"] {
+	--color-background: #fff9eb;
+	--color-on-surface: #1e1c10;
+	--color-on-surface-variant: #5c4037;
+	--color-primary: #aa3000;
+	--color-primary-container: #d43f00;
+	--color-primary-fixed: #ffdbd0;
+	--color-surface: #fff9eb;
+	--color-surface-lowest: #ffffff;
+	--color-surface-container: #f4eedb;
+	--color-surface-high: #efe8d5;
+	--color-secondary-fixed: #e2e2e2;
+	--neo-border-color: #000000;
+
+	/* Las fuentes se heredan automáticamente del :root */
+}
+
+/* =========================================
+   TEMA 2: PÚRPURA / NEÓN (Estilo 2)
+   ========================================= */
+[data-theme="estilo2"] {
+	--color-background: #fafaf4;
+	--color-on-surface: #1a1c19;
+	--color-on-surface-variant: #4a4455;
+	--color-primary: #630ed4;
+	--color-primary-container: #7c3aed;
+	--color-primary-fixed: #eaddff;
+	--color-surface: #fafaf4;
+	--color-surface-lowest: #ffffff;
+	--color-surface-container: #eeeee8;
+	--color-surface-high: #e8e8e3;
+	--color-secondary-fixed: #b2f746;
+	--neo-border-color: #000000;
+
+	/* Las fuentes se heredan automáticamente del :root */
+}
+
+/* =========================================
+   ESTILOS BASE Y NEO-BRUTALISMO
+   ========================================= */
+body {
+	background-color: var(--color-background);
+	color: var(--color-on-surface);
+	font-family: var(--font-body);
+	transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.material-symbols-outlined {
+	font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.neo-border {
+	border: 2px solid var(--neo-border-color);
+}
+
+.neo-shadow {
+	box-shadow: 4px 4px 0px 0px var(--neo-border-color);
+}
+
+.neo-brutalism {
+	border: 2px solid var(--neo-border-color);
+	box-shadow: 4px 4px 0 var(--neo-border-color);
+}
+
+.neo-brutalism-input {
+	border: 2px solid var(--neo-border-color);
+	box-shadow: 2px 2px 0 var(--neo-border-color);
+}
+
+.neo-hover:hover {
+	transform: translate(-2px, -2px);
+	box-shadow: 6px 6px 0px 0px var(--neo-border-color);
+}
+
+.neo-active:active {
+	transform: translate(2px, 2px);
+	box-shadow: 2px 2px 0px 0px var(--neo-border-color);
+}
+
+.sidebar-link {
+	position: relative;
+}
+
+.sidebar-link.active,
+.sidebar-link[aria-current="page"] {
+	background-color: var(--color-primary-fixed) !important;
+	color: var(--color-on-surface) !important;
+	border-color: var(--color-primary) !important;
+	box-shadow: 6px 6px 0px 0px var(--neo-border-color) !important;
+	transform: translate(-1px, -1px);
+}
+
+.sidebar-link.active .material-symbols-outlined,
+.sidebar-link[aria-current="page"] .material-symbols-outlined {
+	color: var(--color-primary) !important;
+}
+
+/* =========================================
+   SCROLLBAR
+   ========================================= */
+::-webkit-scrollbar {
+	width: 6px;
+}
+
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--neo-border-color);
+	border-radius: 0px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: var(--color-primary);
+}
+
+/* Efecto de Cursor para la escritura tipo Streamline (Typewriter) */
+@keyframes blink {
+
+	0%,
+	100% {
+		border-color: transparent;
+	}
+
+	50% {
+		border-color: var(--color-on-surface);
+	}
+}
+
+.typewriter-text {
+	border-right: 2px solid var(--color-on-surface);
+	animation: blink 0.75s step-end infinite;
+	white-space: pre-wrap;
+	/* Mantiene los saltos de línea */
+}
+
+/* Oculta los elementos que serán revelados después */
+.hidden-element {
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.5s ease-in;
+}
+
+.revealed {
+	opacity: 1;
+	pointer-events: auto;
+}

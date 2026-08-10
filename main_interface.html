@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Carlos 2029 - Main Interface</title>
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <!-- Carga de tipografía base -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "var(--color-background)",
+                        "on-surface": "var(--color-on-surface)",
+                        "on-surface-variant": "var(--color-on-surface-variant)",
+                        "primary": "var(--color-primary)",
+                        "primary-container": "var(--color-primary-container)",
+                        "primary-fixed": "var(--color-primary-fixed)",
+                        "surface": "var(--color-surface)",
+                        "surface-container-lowest": "var(--color-surface-lowest)",
+                        "surface-container": "var(--color-surface-container)",
+                        "surface-container-high": "var(--color-surface-high)",
+                        "secondary-fixed": "var(--color-secondary-fixed)"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "margin-mobile": "20px",
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "unit": "4px",
+                        "section-gap": "120px",
+                        "container-max-width": "1200px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["var(--font-headline)"],
+                        "headline-lg-mobile": ["var(--font-headline)"],
+                        "headline-lg": ["var(--font-headline)"],
+                        "display": ["var(--font-headline)"],
+                        "body-lg": ["var(--font-body)"],
+                        "body-md": ["var(--font-body)"],
+                        "label-md": ["var(--font-label)"],
+                        "label-sm": ["var(--font-label)"],
+                        "label-bold": ["var(--font-label)"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="flex h-screen overflow-hidden font-body-md bg-background">
+
+    <!-- Carga del Sidebar -->
+    <div id="sidebar-placeholder"></div>
+
+    <!-- Mobile Top App Bar -->
+    <div
+        class="md:hidden flex justify-between items-center w-full px-gutter h-16 bg-surface border-b-2 border-black fixed top-0 left-0 z-20">
+        <h1 class="font-headline-md text-headline-md font-bold text-black uppercase">Carlos 2029</h1>
+        <div class="flex gap-4">
+            <button class="text-black hover:text-primary-container transition-opacity">
+                <span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content Canvas -->
+    <main class="flex-1 md:ml-64 flex flex-col h-full bg-background relative pt-16 md:pt-0 overflow-y-auto">
+
+        <div
+            class="max-w-4xl mx-auto w-full px-4 md:px-8 py-12 md:py-20 flex flex-col justify-center min-h-[calc(100vh-64px)] md:min-h-screen">
+
+            <!-- Introduction Header -->
+            <section class="text-center space-y-6">
+                <h2
+                    class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface uppercase tracking-tight leading-tight">
+                    ¿Qué deseas explorar sobre el futuro de Carlos?
+                </h2>
+                <div class="w-24 h-2 bg-primary mx-auto border-2 border-black"></div>
+            </section>
+
+            <!-- Bento Grid / Cards -->
+            <section class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16">
+
+                <!-- Tarjeta: Destino -->
+                <a href="destiny.html"
+                    class="block bg-primary-fixed text-on-surface p-8 neo-border neo-shadow neo-hover transition-all cursor-pointer flex flex-col justify-between min-h-[200px] group">
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-surface-container-lowest neo-border p-2 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-on-surface text-3xl"
+                                    data-icon="travel_explore">travel_explore</span>
+                            </div>
+                            <h3 class="font-headline-md text-headline-md text-on-surface uppercase tracking-tight m-0">
+                                Destino</h3>
+                        </div>
+                        <span
+                            class="material-symbols-outlined text-on-surface text-2xl group-hover:translate-x-1 transition-transform"
+                            data-icon="arrow_forward">arrow_forward</span>
+                    </div>
+                    <div class="mt-6 pt-4 border-t-2 border-black">
+                        <p class="font-body-md text-body-md text-on-surface font-medium">"¿En dónde Carlos le gustaría
+                            estar profesionalmente?"</p>
+                    </div>
+                </a>
+
+                <!-- Tarjeta: Skills -->
+                <a href="skills.html"
+                    class="block bg-surface-container-lowest text-on-surface p-8 neo-border neo-shadow neo-hover transition-all cursor-pointer flex flex-col justify-between min-h-[200px] group">
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="bg-primary-container text-white neo-border p-2 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-3xl"
+                                    data-icon="code_blocks">code_blocks</span>
+                            </div>
+                            <h3 class="font-headline-md text-headline-md text-on-surface uppercase tracking-tight m-0">
+                                Skills</h3>
+                        </div>
+                        <span
+                            class="material-symbols-outlined text-on-surface text-2xl group-hover:translate-x-1 transition-transform"
+                            data-icon="arrow_forward">arrow_forward</span>
+                    </div>
+                    <div class="mt-6 pt-4 border-t-2 border-black">
+                        <p class="font-body-md text-body-md text-on-surface font-medium">"¿Qué habilidades necesita
+                            desarrollar Carlos para lograr sus objetivos?"</p>
+                    </div>
+                </a>
+
+                <!-- Tarjeta: Retos -->
+                <a href="challenges.html"
+                    class="block bg-surface-container-lowest text-on-surface p-8 neo-border neo-shadow neo-hover transition-all cursor-pointer flex flex-col justify-between min-h-[200px] group">
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="bg-primary-container text-white neo-border p-2 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-3xl"
+                                    data-icon="query_stats">query_stats</span>
+                            </div>
+                            <h3 class="font-headline-md text-headline-md text-on-surface uppercase tracking-tight m-0">
+                                Retos</h3>
+                        </div>
+                        <span
+                            class="material-symbols-outlined text-on-surface text-2xl group-hover:translate-x-1 transition-transform"
+                            data-icon="arrow_forward">arrow_forward</span>
+                    </div>
+                    <div class="mt-6 pt-4 border-t-2 border-black">
+                        <p class="font-body-md text-body-md text-on-surface font-medium">"¿Qué retos tendrá que superar
+                            Carlos?"</p>
+                    </div>
+                </a>
+
+                <!-- Tarjeta: Legado -->
+                <a href="legacy.html"
+                    class="block bg-surface-container-lowest text-on-surface p-8 neo-border neo-shadow neo-hover transition-all cursor-pointer flex flex-col justify-between min-h-[200px] group">
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="bg-primary-container text-white neo-border p-2 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-3xl" data-icon="public">public</span>
+                            </div>
+                            <h3 class="font-headline-md text-headline-md text-on-surface uppercase tracking-tight m-0">
+                                Legado</h3>
+                        </div>
+                        <span
+                            class="material-symbols-outlined text-on-surface text-2xl group-hover:translate-x-1 transition-transform"
+                            data-icon="arrow_forward">arrow_forward</span>
+                    </div>
+                    <div class="mt-6 pt-4 border-t-2 border-black">
+                        <p class="font-body-md text-body-md text-on-surface font-medium">"¿Cómo quiere Carlos ser
+                            conocido?"</p>
+                    </div>
+                </a>
+
+            </section>
+
+            <!-- Command Input (Visual Only) -->
+            <div class="w-full max-w-2xl mx-auto mt-16">
+                <div class="relative flex items-center group">
+                    <span class="material-symbols-outlined absolute left-4 text-on-surface z-10"
+                        data-icon="search">search</span>
+                    <input
+                        class="w-full bg-surface-container-lowest neo-border text-on-surface font-body-md py-4 pl-12 pr-16 focus:outline-none neo-shadow transition-all opacity-80 cursor-default"
+                        placeholder="Inicia la simulación seleccionando un comando superior..." type="text" readonly
+                        disabled />
+                    <div
+                        class="absolute right-2 p-2 bg-surface-container-high text-on-surface border-2 border-transparent">
+                        <span class="material-symbols-outlined opacity-50" data-icon="lock">lock</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        // Carga dinámica del sidebar
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch("sidebar.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("sidebar-placeholder").innerHTML = data;
+                    activateSidebarLink();
+                })
+                .catch(error => console.error("Error cargando el sidebar:", error));
+        });
+
+        function activateSidebarLink() {
+            const links = document.querySelectorAll(".sidebar-link");
+            if (!links.length) return;
+
+            const currentPage = window.location.pathname.split("/").pop() || "main_interface.html";
+
+            links.forEach(link => {
+                const href = link.getAttribute("href");
+                if (!href) return;
+
+                const linkPage = new URL(href, window.location.href).pathname.split("/").pop();
+                const isCurrent = linkPage === currentPage;
+
+                link.classList.toggle("active", isCurrent);
+                if (isCurrent) {
+                    link.setAttribute("aria-current", "page");
+                } else {
+                    link.removeAttribute("aria-current");
+                }
+            });
+        }
+
+        const THEME_STORAGE_KEY = "site-theme";
+
+        function applyTheme(themeName) {
+            const htmlElement = document.documentElement;
+            if (themeName === "estilo1" || themeName === "estilo2") {
+                htmlElement.setAttribute("data-theme", themeName);
+            } else {
+                htmlElement.removeAttribute("data-theme");
+            }
+        }
+
+        function getStoredTheme() {
+            return localStorage.getItem(THEME_STORAGE_KEY);
+        }
+
+        function applyStoredTheme() {
+            applyTheme(getStoredTheme());
+        }
+
+        function getNextTheme(currentTheme) {
+            if (!currentTheme) return "estilo1";
+            if (currentTheme === "estilo1") return "estilo2";
+            return null;
+        }
+
+        window.addEventListener("storage", (event) => {
+            if (event.key === THEME_STORAGE_KEY) {
+                applyTheme(event.newValue);
+            }
+        });
+
+        applyStoredTheme();
+
+        // Función global de tema requerida por el sidebar
+        function toggleTheme(event) {
+            if (event) event.preventDefault();
+            const currentTheme = document.documentElement.getAttribute("data-theme");
+            const nextTheme = getNextTheme(currentTheme);
+
+            applyTheme(nextTheme);
+
+            if (nextTheme) {
+                localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+            } else {
+                localStorage.removeItem(THEME_STORAGE_KEY);
+            }
+        }
+    </script>
+</body>
+
+</html>

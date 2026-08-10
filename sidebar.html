@@ -1,0 +1,63 @@
+<!-- sidebar.html -->
+<nav
+    class="h-full w-64 fixed left-0 top-0 bg-surface-container-lowest neo-border border-r-2 border-y-0 border-l-0 hidden md:flex flex-col py-8 gap-4 z-50">
+
+    <!-- 2. Textos actualizados -->
+    <div class="px-6 mb-8">
+        <h1 class="font-headline-md text-headline-md text-on-surface mb-1 uppercase tracking-tight">Carlos Castro</h1>
+        <p
+            class="font-label-sm text-label-sm text-on-surface uppercase tracking-widest border-b-2 border-black pb-2 inline-block">
+            GPS Profesional 2029
+        </p>
+    </div>
+
+    <!-- Contenedor flex-grow para empujar el botón final hacia abajo -->
+    <div class="flex flex-col gap-4 flex-grow px-4 pb-4">
+
+        <!-- Contenedor de navegación -->
+        <div class="flex flex-col gap-4">
+
+            <!-- 3. Botón de Inicio -->
+            <a class="sidebar-link flex items-center gap-4 px-6 py-3 bg-surface-container-lowest text-on-surface neo-border neo-shadow neo-hover neo-active transition-all"
+                href="main_interface.html" data-page="main_interface">
+                <span class="material-symbols-outlined" data-icon="home">home</span>
+                <span class="font-label-md text-label-md uppercase">Inicio</span>
+            </a>
+
+            <!-- 1. Enlaces a sus respectivas vistas -->
+            <a class="sidebar-link flex items-center gap-4 px-6 py-3 bg-surface-container-lowest text-on-surface neo-border neo-shadow neo-hover neo-active transition-all"
+                href="destiny.html" data-page="destiny">
+                <span class="material-symbols-outlined" data-icon="explore">explore</span>
+                <span class="font-label-md text-label-md uppercase">Destino</span>
+            </a>
+
+            <a class="sidebar-link flex items-center gap-4 px-6 py-3 bg-surface-container-lowest text-on-surface neo-border neo-shadow neo-hover neo-active transition-all"
+                href="skills.html" data-page="skills">
+                <span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+                <span class="font-label-md text-label-md uppercase">Skills</span>
+            </a>
+
+            <a class="sidebar-link flex items-center gap-4 px-6 py-3 bg-surface-container-lowest text-on-surface neo-border neo-shadow neo-hover neo-active transition-all"
+                href="challenges.html" data-page="challenges">
+                <span class="material-symbols-outlined" data-icon="terrain">terrain</span>
+                <span class="font-label-md text-label-md uppercase">Retos</span>
+            </a>
+
+            <a class="sidebar-link flex items-center gap-4 px-6 py-3 bg-surface-container-lowest text-on-surface neo-border neo-shadow neo-hover neo-active transition-all"
+                href="legacy.html" data-page="legacy">
+                <span class="material-symbols-outlined" data-icon="history_edu">history_edu</span>
+                <span class="font-label-md text-label-md uppercase">Legado</span>
+            </a>
+        </div>
+
+        <!-- 4. Botón de Tema (hasta abajo usando mt-auto) -->
+        <!-- 5. Lógica de delay/debounce inline para evitar spam -->
+        <button
+            onclick="if(this.dataset.locked === 'true') return; this.dataset.locked = 'true'; this.style.cursor = 'pointer'; toggleTheme(event); setTimeout(() => { this.dataset.locked = 'false'; this.style.opacity = '1'; this.style.cursor = 'pointer'; }, 500);"
+            class="mt-auto flex items-center gap-4 px-6 py-3 bg-secondary-fixed text-on-surface neo-border neo-shadow neo-hover transition-all w-full text-left">
+            <span class="material-symbols-outlined" data-icon="palette">palette</span>
+            <span class="font-label-md text-label-md uppercase">Cambiar Tema</span>
+        </button>
+
+    </div>
+</nav>

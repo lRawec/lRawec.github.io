@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Carlos 2029 - Career Legacy</title>
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <!-- Carga de tipografía base -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "var(--color-background)",
+                        "on-surface": "var(--color-on-surface)",
+                        "on-surface-variant": "var(--color-on-surface-variant)",
+                        "primary": "var(--color-primary)",
+                        "primary-container": "var(--color-primary-container)",
+                        "primary-fixed": "var(--color-primary-fixed)",
+                        "surface": "var(--color-surface)",
+                        "surface-container-lowest": "var(--color-surface-lowest)",
+                        "surface-container": "var(--color-surface-container)",
+                        "surface-container-high": "var(--color-surface-high)",
+                        "secondary-fixed": "var(--color-secondary-fixed)"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "margin-mobile": "20px",
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "unit": "4px",
+                        "section-gap": "120px",
+                        "container-max-width": "1200px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["var(--font-headline)"],
+                        "headline-lg-mobile": ["var(--font-headline)"],
+                        "headline-lg": ["var(--font-headline)"],
+                        "display": ["var(--font-headline)"],
+                        "body-lg": ["var(--font-body)"],
+                        "body-md": ["var(--font-body)"],
+                        "label-md": ["var(--font-label)"],
+                        "label-sm": ["var(--font-label)"],
+                        "label-bold": ["var(--font-label)"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="flex h-screen overflow-hidden font-body-md">
+
+    <!-- Carga del Sidebar -->
+    <div id="sidebar-placeholder"></div>
+
+    <!-- Mobile Top App Bar -->
+    <div
+        class="md:hidden flex justify-between items-center w-full px-gutter h-16 bg-surface border-b-2 border-black fixed top-0 left-0 z-20">
+        <h1 class="font-headline-md text-headline-md font-bold text-black uppercase">Career Oracle</h1>
+        <div class="flex gap-4">
+            <button class="text-black hover:text-primary-container transition-opacity">
+                <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+            </button>
+            <button class="text-black hover:text-primary-container transition-opacity">
+                <span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+            </button>
+            <div
+                class="w-8 h-8 rounded-none border-2 border-black bg-primary-container flex justify-center items-center">
+                <span class="material-symbols-outlined text-white text-sm">person</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Canvas -->
+    <main class="flex-1 md:ml-64 flex flex-col h-full bg-background relative pt-16 md:pt-0">
+
+        <!-- Chat Area -->
+        <div class="flex-1 overflow-y-auto px-margin-mobile md:px-margin-desktop py-8 scroll-smooth"
+            id="chat-container">
+            <div class="max-w-[800px] mx-auto space-y-12">
+
+                <!-- User Message -->
+                <div class="flex justify-end">
+                    <div class="bg-primary-fixed border-2 border-black neo-brutalism px-6 py-4 max-w-[80%]">
+                        <p class="font-body-md text-body-md text-black font-bold uppercase">¿Cómo quiere Carlos ser
+                            conocido?</p>
+                    </div>
+                </div>
+
+                <!-- Agent Response -->
+                <div class="flex items-start gap-6">
+                    <div
+                        class="w-12 h-12 rounded-none bg-primary-container border-2 border-black neo-brutalism flex items-center justify-center shrink-0">
+                        <span class="material-symbols-outlined text-white" data-icon="auto_awesome">auto_awesome</span>
+                    </div>
+
+                    <div
+                        class="flex-1 bg-surface border-2 border-black neo-brutalism flex flex-col relative min-h-[300px]">
+
+                        <!-- Thinking Indicator -->
+                        <div id="thinking-indicator"
+                            class="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-surface z-10 transition-opacity duration-500">
+                            <span class="material-symbols-outlined animate-spin text-4xl text-primary">autorenew</span>
+                            <span class="font-label-md uppercase font-bold tracking-widest animate-pulse">Proyectando
+                                legado a largo plazo...</span>
+                        </div>
+
+                        <!-- Content (Hidden initially) -->
+                        <div id="response-content" class="hidden-element flex flex-col h-full">
+                            <!-- Card Header -->
+                            <div class="border-b-2 border-black p-6 bg-primary-fixed flex items-center gap-4">
+                                <h2
+                                    class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-black uppercase tracking-tight">
+                                    Legado Profesional
+                                </h2>
+                            </div>
+
+                            <!-- Card Body -->
+                            <div class="p-6 md:p-8 space-y-8 bg-white flex-grow">
+                                <!-- Vision Box -->
+                                <div class="border-2 border-black bg-surface-container-high p-6 relative">
+                                    <div
+                                        class="absolute top-0 left-0 bg-black text-white font-label-sm text-label-sm uppercase px-2 py-1 transform -translate-y-1/2 translate-x-4 border-2 border-black">
+                                        IMPACTO FINAL
+                                    </div>
+                                    <p class="font-body-lg text-body-lg mt-2 font-bold leading-relaxed">
+                                        Para responder a cómo quiere ser conocido, Carlos busca trascender no solo por
+                                        sus líneas de código, sino por lograr el balance perfecto entre la libertad
+                                        personal y la construcción de infraestructura tecnológica que transforma la
+                                        industria.
+                                    </p>
+                                </div>
+
+                                <!-- Evolution Timeline Layout -->
+                                <div
+                                    class="relative flex flex-col gap-8 mt-4 pl-4 md:pl-8 before:absolute before:inset-y-0 before:left-[21px] md:before:left-[37px] before:w-1 before:bg-black before:z-0">
+
+                                    <!-- Phase 1 -->
+                                    <div
+                                        class="relative flex flex-col md:flex-row gap-4 md:gap-8 items-start group z-10">
+                                        <div
+                                            class="bg-primary-fixed border-2 border-black h-12 w-12 rounded-none flex items-center justify-center font-bold text-lg neo-shadow shrink-0 group-hover:bg-primary group-hover:text-white transition-colors">
+                                            1
+                                        </div>
+                                        <div
+                                            class="border-2 border-black p-6 bg-surface-container-lowest flex flex-col gap-4 neo-shadow hover:translate-x-1 hover:-translate-y-1 transition-all w-full">
+                                            <div class="flex items-center justify-between border-b-2 border-black pb-4">
+                                                <div class="flex flex-col">
+                                                    <span
+                                                        class="font-label-sm text-label-sm font-bold text-primary mb-1 tracking-widest">EL
+                                                        PROFESIONAL</span>
+                                                    <h3
+                                                        class="font-headline-md text-headline-md font-bold uppercase tracking-tight group-hover:text-primary transition-colors">
+                                                        Top 1% AI Engineer</h3>
+                                                </div>
+                                            </div>
+                                            <p id="typewriter-legacy-1"
+                                                class="font-body-md text-body-md text-on-surface-variant typewriter-text min-h-[3rem]">
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Phase 2 -->
+                                    <div class="relative flex flex-col md:flex-row gap-4 md:gap-8 items-start group z-10 hidden-element"
+                                        id="card-legacy-2">
+                                        <div
+                                            class="bg-secondary-fixed border-2 border-black h-12 w-12 rounded-none flex items-center justify-center font-bold text-lg neo-shadow shrink-0 group-hover:bg-black group-hover:text-white transition-colors">
+                                            2
+                                        </div>
+                                        <div
+                                            class="border-2 border-black p-6 bg-surface-container-lowest flex flex-col gap-4 neo-shadow hover:translate-x-1 hover:-translate-y-1 transition-all w-full">
+                                            <div class="flex items-center justify-between border-b-2 border-black pb-4">
+                                                <div class="flex flex-col">
+                                                    <span
+                                                        class="font-label-sm text-label-sm font-bold text-black mb-1 tracking-widest">LA
+                                                        MARCA PERSONAL</span>
+                                                    <h3
+                                                        class="font-headline-md text-headline-md font-bold uppercase tracking-tight group-hover:text-primary transition-colors">
+                                                        El Balance Perfecto</h3>
+                                                </div>
+                                            </div>
+                                            <p id="typewriter-legacy-2"
+                                                class="font-body-md text-body-md text-on-surface-variant min-h-[4rem]">
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="h-8"></div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Carga dinámica del sidebar
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch("sidebar.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("sidebar-placeholder").innerHTML = data;
+                    activateSidebarLink();
+                })
+                .catch(error => console.error("Error cargando el sidebar:", error));
+
+            startAiSimulation();
+        });
+
+        const text1 = "Carlos quiere ser conocido y reconocido globalmente como una pieza clave e irremplazable dentro de la organización: el ingeniero que logró cerrar la brecha definitiva entre los modelos teóricos de IA y las infraestructuras estables de producción.";
+        const text2 = "Asimismo, desea consolidar su marca personal como el profesional que logró construir infraestructura de IA altamente disruptiva y ética, manteniendo simultáneamente un estilo de vida de libertad absoluta y trabajando de forma asíncrona desde cualquier rincón del mundo.";
+
+        function startAiSimulation() {
+            const thinkingIndicator = document.getElementById('thinking-indicator');
+            const responseContent = document.getElementById('response-content');
+
+            const tw1 = document.getElementById('typewriter-legacy-1');
+            const tw2 = document.getElementById('typewriter-legacy-2');
+            const card2 = document.getElementById('card-legacy-2');
+
+            setTimeout(() => {
+                thinkingIndicator.classList.add('opacity-0');
+                setTimeout(() => {
+                    thinkingIndicator.classList.add('hidden');
+                    responseContent.classList.remove('hidden-element');
+                    responseContent.classList.add('revealed');
+
+                    // Cascada de escritura
+                    typeWriter(tw1, text1, 0, () => {
+                        tw1.classList.remove('typewriter-text');
+
+                        card2.classList.remove('hidden-element');
+                        card2.classList.add('revealed');
+                        tw2.classList.add('typewriter-text');
+
+                        typeWriter(tw2, text2, 0, () => {
+                            tw2.classList.remove('typewriter-text');
+                        });
+                    });
+                }, 500);
+            }, 1800);
+        }
+
+        function typeWriter(element, text, index, callback) {
+            if (index < text.length) {
+                element.innerHTML += text.charAt(index);
+
+                const randomSpeed = Math.floor(Math.random() * 15) + 5;
+                setTimeout(() => typeWriter(element, text, index + 1, callback), randomSpeed);
+            } else if (callback) {
+                callback();
+            }
+        }
+
+        function activateSidebarLink() {
+            const links = document.querySelectorAll(".sidebar-link");
+            if (!links.length) return;
+            const currentPage = window.location.pathname.split("/").pop() || "main_interface.html";
+            links.forEach(link => {
+                const href = link.getAttribute("href");
+                if (!href) return;
+                const linkPage = new URL(href, window.location.href).pathname.split("/").pop();
+                const isCurrent = linkPage === currentPage;
+                link.classList.toggle("active", isCurrent);
+            });
+        }
+
+        const THEME_STORAGE_KEY = "site-theme";
+
+        function applyTheme(themeName) {
+            const htmlElement = document.documentElement;
+            if (themeName === "estilo1" || themeName === "estilo2") {
+                htmlElement.setAttribute("data-theme", themeName);
+            } else {
+                htmlElement.removeAttribute("data-theme");
+            }
+        }
+
+        function getStoredTheme() {
+            return localStorage.getItem(THEME_STORAGE_KEY);
+        }
+
+        function applyStoredTheme() {
+            applyTheme(getStoredTheme());
+        }
+
+        function getNextTheme(currentTheme) {
+            if (!currentTheme) return "estilo1";
+            if (currentTheme === "estilo1") return "estilo2";
+            return null;
+        }
+
+        window.addEventListener("storage", (event) => {
+            if (event.key === THEME_STORAGE_KEY) {
+                applyTheme(event.newValue);
+            }
+        });
+
+        applyStoredTheme();
+
+        // Lógica para cambiar de tema
+        function toggleTheme(event) {
+            if (event) event.preventDefault();
+            const currentTheme = document.documentElement.getAttribute("data-theme");
+            const nextTheme = getNextTheme(currentTheme);
+
+            applyTheme(nextTheme);
+
+            if (nextTheme) {
+                localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+            } else {
+                localStorage.removeItem(THEME_STORAGE_KEY);
+            }
+        }
+    </script>
+</body>
+
+</html>
